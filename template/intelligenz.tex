@@ -1,0 +1,67 @@
+\documentclass[
+  a4paper,            % DIN A4
+  DIV=10,             % Schriftgröße und Satzspiegel
+  oneside,            % einseitiger Druck
+  BCOR=5mm,           % Bindungskorrektur
+  parskip=half,       % Halber Abstand zwischen Absätzen
+  numbers=noenddot,   % Kein Punkt hinter Kapitelnummern
+  bibtotoc,           % Literaturverzeichnis im Inhaltsverzeichnis
+  listof=totoc        % Abbildungs- und Tabellenverzeichnis im Inhaltsverzeichnis
+]{scrartcl}
+\usepackage{../style/termpaperstyle}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{adjustbox}
+
+%\usepackage{layout}       % Layout Debugging
+%\usepackage{showframe}    % Layout Debugging
+
+\begin{document}
+\input{configuration/configuration}    % load all settings
+
+%\layout{}                 % Layout Debugging
+
+\hyphenation{Ba-che-lor-the-sis Mas-ter-the-sis}
+
+% Cover page here, no page number
+\ICoverPage
+
+% Titlepage is page one even if the number is not shown.
+
+
+% Table of contents here
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+
+% Uncomment if list of source code is needed (rarely).
+%\lstlistoflistings  % requires package listings, needs to uncommenting of usepackage
+
+% path to the chapters folder is set to find the images used there
+\graphicspath{ {./chapters/} }
+
+
+
+\begin{abstract}
+\input{chapters/paperabstract}
+\end{abstract}
+
+
+% Chapters
+\clearpage
+\pagenumbering{arabic}
+
+\newpage
+\input{chapters/konzepte_chapter}
+\newpage
+\input{chapters/intelligenz_chapter}
+% Add additional chapters here
+
+\newpage
+%\bibliographystyle{plain}
+\bibliographystyle{dinat}
+\bibliography{literature}
+
+
+\end{document}
